@@ -1,0 +1,94 @@
+/* Base y tipografía: solo fuentes del sistema */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  background: radial-gradient(circle at 50% 0%, var(--fondo-luz), var(--fondo) 70%) fixed;
+  color: var(--texto);
+  /* Áreas seguras: notch y barra inferior */
+  padding: calc(1rem + env(safe-area-inset-top)) calc(1rem + env(safe-area-inset-right))
+           calc(1rem + env(safe-area-inset-bottom)) calc(1rem + env(safe-area-inset-left));
+}
+
+main, .cabecera { max-width: 40rem; margin-inline: auto; }
+
+/* Cabecera */
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+.cabecera h1 { margin: 0; font-size: 1.6rem; letter-spacing: .02em; color: var(--acento); }
+
+.boton-tema {
+  display: grid; place-items: center;
+  width: 3rem; height: 3rem;           /* zona táctil amplia */
+  border: 2px solid var(--acento); border-radius: 50%;
+  background: transparent; color: var(--acento); cursor: pointer;
+}
+.boton-tema svg { width: 1.6rem; height: 1.6rem; }
+:root[data-tema="claro"] .icono-sol,
+:root[data-tema="oscuro"] .icono-luna { display: none; }
+
+/* Menú de trucos (flexbox) */
+.rejilla { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.rejilla li { flex: 1 1 9rem; display: flex; }
+.rejilla li.destacada { flex-basis: 100%; }
+
+.tarjeta {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  width: 100%; padding: 1rem; text-align: center; font: inherit; cursor: pointer;
+  color: var(--texto); background: var(--superficie);
+  border: 2px solid var(--borde); border-radius: 1rem;
+}
+.tarjeta h2 { margin: 0; font-size: 1.1rem; }
+.tarjeta p { margin: 0; font-size: .9rem; color: var(--texto-suave); }
+.tarjeta .dibujo { width: 4.5rem; height: 4.5rem; color: var(--acento); }
+
+/* Tarjeta principal: usa el contraste dinámico sobre el acento */
+.destacada .tarjeta { background: var(--acento); border-color: var(--acento); color: var(--texto-sobre-acento); }
+.destacada .tarjeta p { color: var(--texto-sobre-acento); }
+.destacada .tarjeta .dibujo { width: 7rem; height: 7rem; color: var(--texto-sobre-acento); }
+
+/* Trazos de los SVG: heredan el color del tema */
+.trazo { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.relleno { fill: currentColor; }
+.detalle { fill: var(--detalle); }
+
+/* Sección del truco secreto */
+.secreto { margin-top: 2rem; padding: 1rem; border: 2px dashed var(--detalle); border-radius: 1rem; }
+.secreto h2 { margin: 0 0 .75rem; font-size: 1.1rem; }
+.secreto label { display: block; margin-bottom: .25rem; }
+.campo-fila { display: flex; flex-wrap: wrap; gap: .75rem; }
+.campo-fila input {
+  flex: 1 1 10rem; min-height: 3rem; padding: 0 .75rem; font: inherit;
+  color: var(--texto); background: var(--fondo); border: 2px solid var(--borde); border-radius: .75rem;
+}
+.boton-principal {
+  min-height: 3rem; padding: 0 1.25rem; font: inherit; font-weight: 700; cursor: pointer;
+  background: var(--acento); color: var(--texto-sobre-acento); border: 0; border-radius: .75rem;
+}
+.mensaje { min-height: 1.5rem; margin: .75rem 0 0; color: var(--texto-suave); }
+
+/* Foco visible */
+:is(button, input):focus-visible { outline: 3px solid var(--detalle); outline-offset: 2px; }
+
+/* Transiciones breves */
+.tarjeta, .boton-principal, .boton-tema { transition: transform .15s ease, background-color .15s ease; }
+.tarjeta:active, .boton-principal:active { transform: scale(.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* Panel "Cómo jugar" y botones de la cabecera */
+.grupo-botones { display: flex; gap: .75rem; }
+.panel-ayuda { max-width: 40rem; max-height: 60vh; overflow-y: auto; margin: 0 auto 1.5rem; padding: 1rem; background: var(--superficie); border: 2px solid var(--borde); border-radius: 1rem; }
+.panel-ayuda h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
+.panel-ayuda details { border-top: 1px solid var(--borde); }
+.panel-ayuda summary { display: flex; align-items: center; min-height: 2.75rem; cursor: pointer; font-weight: 700; color: var(--acento); }
+.panel-ayuda ol { margin: 0; padding: .25rem 0 .75rem 1.25rem; }
+.panel-ayuda li + li { margin-top: .5rem; }
+
+/* Utilidades */
+[hidden] { display: none !important; }
+a.tarjeta { text-decoration: none; }

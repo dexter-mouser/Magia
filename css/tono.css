@@ -1,0 +1,28 @@
+/* Variables de color. El tema lo define data-tema en <html> (ver js/tema.js) */
+:root,
+:root[data-tema="claro"] {
+  --fondo: #E6CF9F;        /* pergamino */
+  --fondo-luz: #F1E1BA;    /* centro más claro del pergamino */
+  --superficie: #F6EACB;
+  --texto: #2B1710;
+  --texto-suave: #55352A;
+  --acento: #740001;       /* granate Gryffindor */
+  --detalle: #A97C0F;      /* dorado envejecido */
+  --borde: #B0925A;
+  --texto-sobre-acento: #FFFFFF; /* se recalcula en js/contraste.js */
+  --carta-fondo: #FFF9EC;  /* papel de la carta */
+  --carta-rojo: #AE0001;
+  --carta-negro: #1A0B0B;
+}
+
+:root[data-tema="oscuro"] {
+  --fondo: #1A0B0B;
+  --fondo-luz: #2E1414;
+  --superficie: #2A1212;
+  --texto: #F5E9D0;
+  --texto-suave: #D8C4A0;
+  --acento: #EEBA30;       /* dorado */
+  --detalle: #D3281C;      /* rojo */
+  --borde: #4A2424;
+  --texto-sobre-acento: #1A0B0B; /* se recalcula en js/contraste.js */
+}

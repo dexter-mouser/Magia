@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Carta elegida</title>
+  <link rel="icon" type="image/svg+xml" href="../img/icono.svg">
+  <link rel="stylesheet" href="../css/tono.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/truco.css">
+  <script src="../js/contraste.js"></script>
+  <script src="../js/tema.js"></script>
+  <script src="../js/comun-truco.js" defer></script>
+  <script src="../js/baraja.js" defer></script>
+  <script src="../js/carta-elegida.js" defer></script>
+</head>
+<body class="pagina-truco">
+  <header class="cabecera">
+    <a class="boton-tema" href="../index.html" aria-label="Volver al menú">
+      <svg viewBox="0 0 24 24" role="img" aria-label="Icono de flecha hacia la izquierda">
+        <path class="trazo" d="M15 5l-7 7 7 7"/>
+      </svg>
+    </a>
+    <button id="boton-tema" class="boton-tema" type="button" aria-label="Cambiar entre tema claro y oscuro" aria-pressed="false">
+      <svg class="icono-sol" viewBox="0 0 24 24" role="img" aria-label="Icono de sol">
+        <circle class="trazo" cx="12" cy="12" r="4"/>
+        <path class="trazo" d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>
+      </svg>
+      <svg class="icono-luna" viewBox="0 0 24 24" role="img" aria-label="Icono de luna">
+        <path class="trazo" d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="escenario">
+    <!-- Esquinas ocultas: reciben el código secreto del mago. Cada una guarda una pista tenue -->
+    <div class="esquina" data-esquina="sup-izq" aria-hidden="true">
+      <svg class="pista" viewBox="0 0 56 24" role="img" aria-label="Pista: corazones, suma 1"><text x="2" y="18" font-size="16" fill="currentColor">&#9829;&#xFE0E;</text><text x="26" y="17" font-size="13" fill="currentColor">+1</text></svg>
+    </div>
+    <div class="esquina" data-esquina="sup-der" aria-hidden="true">
+      <svg class="pista" viewBox="0 0 56 24" role="img" aria-label="Pista: diamantes, suma 5"><text x="2" y="18" font-size="16" fill="currentColor">&#9830;&#xFE0E;</text><text x="26" y="17" font-size="13" fill="currentColor">+5</text></svg>
+    </div>
+    <div class="esquina" data-esquina="inf-izq" aria-hidden="true">
+      <svg class="pista" viewBox="0 0 56 24" role="img" aria-label="Pista: tréboles, suma 10"><text x="2" y="18" font-size="16" fill="currentColor">&#9827;&#xFE0E;</text><text x="26" y="17" font-size="13" fill="currentColor">+10</text></svg>
+    </div>
+    <div class="esquina" data-esquina="inf-der" aria-hidden="true">
+      <svg class="pista" viewBox="0 0 56 24" role="img" aria-label="Pista: picas"><text x="2" y="18" font-size="16" fill="currentColor">&#9824;&#xFE0E;</text></svg>
+    </div>
+    <!-- Centro: al tocarlo se muestran las pistas por 2 segundos -->
+    <div class="centro" aria-hidden="true"></div>
+
+    <div class="contenido">
+      <h1 id="titulo-truco" class="titulo-truco">Carta elegida</h1>
+      <div id="zona-carta" class="zona-carta"></div>
+      <p id="mensaje-truco" class="mensaje" role="status"></p>
+      <div class="acciones">
+        <button id="boton-adivinar" class="boton-principal" type="button">Adivinar</button>
+        <button id="boton-repetir" class="boton-secundario" type="button" hidden>Repetir</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

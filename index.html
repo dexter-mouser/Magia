@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Magia Gryffindor</title>
+  <link rel="icon" type="image/svg+xml" href="img/icono.svg">
+  <link rel="stylesheet" href="css/tono.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/contraste.js"></script>
+  <script src="js/tema.js"></script>
+  <script src="js/principal.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Magia Gryffindor</h1>
+    <div class="grupo-botones">
+      <!-- Cómo jugar: abre y cierra el panel de ayuda -->
+      <button id="boton-ayuda" class="boton-tema" type="button" aria-label="Cómo jugar" aria-expanded="false" aria-controls="panel-ayuda">
+        <svg viewBox="0 0 24 24" role="img" aria-label="Icono de signo de interrogación">
+          <circle class="trazo" cx="12" cy="12" r="10"/>
+          <path class="trazo" d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7"/>
+          <circle class="relleno" cx="12" cy="17" r="1"/>
+        </svg>
+      </button>
+      <!-- Botón de tema: muestra sol en oscuro y luna en claro -->
+      <button id="boton-tema" class="boton-tema" type="button" aria-label="Cambiar entre tema claro y oscuro" aria-pressed="false">
+        <svg class="icono-sol" viewBox="0 0 24 24" role="img" aria-label="Icono de sol">
+          <circle class="trazo" cx="12" cy="12" r="4"/>
+          <path class="trazo" d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>
+        </svg>
+        <svg class="icono-luna" viewBox="0 0 24 24" role="img" aria-label="Icono de luna">
+          <path class="trazo" d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Panel oculto: cómo se hace cada truco -->
+  <section id="panel-ayuda" class="panel-ayuda" aria-labelledby="titulo-ayuda" hidden>
+    <h2 id="titulo-ayuda">Cómo jugar</h2>
+    <details name="ayuda">
+      <summary>Carta del Sombrero</summary>
+      <ol>
+        <li>Pide a la persona que piense una carta de la baraja y que la diga en voz alta.</li>
+        <li>Sin que lo note, toca una vez la esquina del palo: arriba izquierda ♥, arriba derecha ♦, abajo izquierda ♣, abajo derecha ♠.</li>
+        <li>Suma el valor con más toques: arriba izquierda +1, arriba derecha +5, abajo izquierda +10 (A=1, J=11, Q=12, K=13).</li>
+        <li>Pulsa Sacar carta y espera la animación: la carta sube desde el sombrero.</li>
+        <li>Si olvidas el código, toca el centro de la pantalla: se ven unas pistas tenues durante 2 segundos.</li>
+        <li>Para borrar el código, mantén pulsado el título. Si el código está incompleto, Sacar carta lo reinicia.</li>
+      </ol>
+    </details>
+    <details name="ayuda">
+      <summary>Carta elegida</summary>
+      <ol>
+      <li>Pide a la persona que piense una carta de la baraja y que la diga en voz alta.</li>
+      <li>Sin que lo note, toca una vez la esquina del palo: arriba izquierda ♥, arriba derecha ♦, abajo izquierda ♣, abajo derecha ♠.</li>
+      <li>Suma el valor con más toques: arriba izquierda +1, arriba derecha +5, abajo izquierda +10 (A=1, J=11, Q=12, K=13). Ejemplo: el 7 son un toque arriba a la derecha y dos arriba a la izquierda.</li>
+      <li>Pulsa Adivinar y espera la animación: aparece la carta.</li>
+      <li>Si olvidas el código, toca el centro de la pantalla: se ven unas pistas tenues durante 2 segundos.</li>
+      <li>Para borrar el código, mantén pulsado el título. Si el código está incompleto, Adivinar lo reinicia.</li>
+    </ol>
+    </details>
+    <details name="ayuda">
+      <summary>Dado del destino</summary>
+      <ol>
+      <li>Pide a la persona que piense un número del 1 al 6.</li>
+      <li>Sin que lo note, suma ese número con toques en las esquinas: arriba izquierda +1, arriba derecha +2, abajo izquierda +3. Ejemplo: el 5 son un toque abajo a la izquierda y uno arriba a la derecha.</li>
+      <li>Pulsa Lanzar: el dado rueda y cae en ese número.</li>
+      <li>Si olvidas el código, toca el centro de la pantalla: se ven unas pistas tenues durante 2 segundos.</li>
+      <li>Para borrar el código, mantén pulsado el título. Si lanzas sin código, el dado cae al azar.</li>
+    </ol>
+    </details>
+  </section>
+
+  <main>
+    <!-- Menú de trucos: una tarjeta por truco -->
+    <ul class="rejilla">
+      <li class="destacada">
+        <a class="tarjeta" href="trucos/carta-del-sombrero.html">
+          <svg class="dibujo" viewBox="0 0 64 64" role="img" aria-label="Sombrero mágico con una carta saliendo">
+            <rect class="detalle" x="23" y="3" width="18" height="26" rx="3" transform="rotate(-12 32 20)"/>
+            <path class="relleno" d="M32 18 L47 46 H17 Z"/>
+            <ellipse class="relleno" cx="32" cy="48" rx="27" ry="7"/>
+            <rect class="detalle" x="23" y="39" width="18" height="4"/>
+          </svg>
+          <h2>Carta del Sombrero</h2>
+          <p>Nombra una carta y sale del sombrero.</p>
+        </a>
+      </li>
+      <li>
+        <a class="tarjeta" href="trucos/carta-elegida.html">
+          <svg class="dibujo" viewBox="0 0 64 64" role="img" aria-label="Dos cartas de baraja superpuestas">
+            <rect class="trazo" x="12" y="10" width="30" height="42" rx="4" transform="rotate(-8 27 31)"/>
+            <rect class="trazo" x="24" y="12" width="30" height="42" rx="4"/>
+            <circle class="detalle" cx="39" cy="33" r="6"/>
+          </svg>
+          <h2>Carta elegida</h2>
+          <p>Piensa una carta y el celular la muestra.</p>
+        </a>
+      </li>
+      <li>
+        <a class="tarjeta" href="trucos/dado-del-destino.html">
+          <svg class="dibujo" viewBox="0 0 64 64" role="img" aria-label="Dado con tres puntos">
+            <rect class="trazo" x="8" y="8" width="48" height="48" rx="10"/>
+            <circle class="detalle" cx="22" cy="22" r="4"/>
+            <circle class="detalle" cx="32" cy="32" r="4"/>
+            <circle class="detalle" cx="42" cy="42" r="4"/>
+          </svg>
+          <h2>Dado del destino</h2>
+          <p>Piensa un número del 1 al 6.</p>
+        </a>
+      </li>
+      <li>
+        <button class="tarjeta" type="button">
+          <svg class="dibujo" viewBox="0 0 64 64" role="img" aria-label="Huella digital formada por círculos concéntricos">
+            <circle class="trazo" cx="32" cy="32" r="8"/>
+            <circle class="trazo" cx="32" cy="32" r="16" stroke-dasharray="40 12"/>
+            <circle class="trazo" cx="32" cy="32" r="24" stroke-dasharray="60 20"/>
+            <circle class="detalle" cx="32" cy="32" r="3"/>
+          </svg>
+          <h2>Detector de mentiras</h2>
+          <p>Pon el dedo y descubre si mientes.</p>
+        </button>
+      </li>
+      <li>
+        <button class="tarjeta" type="button">
+          <svg class="dibujo" viewBox="0 0 64 64" role="img" aria-label="Calendario con una estrella">
+            <rect class="trazo" x="10" y="14" width="44" height="40" rx="5"/>
+            <path class="trazo" d="M10 26h44M22 8v10M42 8v10"/>
+            <circle class="detalle" cx="32" cy="40" r="5"/>
+          </svg>
+          <h2>Contador de edad</h2>
+          <p>Tu fecha de nacimiento, adivinada.</p>
+        </button>
+      </li>
+    </ul>
+
+    <!-- Broma: copia un texto con el número escrito -->
+    <section class="secreto" aria-labelledby="titulo-secreto">
+      <h2 id="titulo-secreto">Zona secreta</h2>
+      <label for="campo-numero">Escribe un número de 10 dígitos</label>
+      <div class="campo-fila">
+        <input id="campo-numero" type="tel" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="3000000000">
+        <button id="boton-secreto" class="boton-principal" type="button">Truco secreto</button>
+      </div>
+      <p id="mensaje-secreto" class="mensaje" role="status"></p>
+    </section>
+  </main>
+</body>
+</html>
